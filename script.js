@@ -37,6 +37,36 @@ const computerSelection = getComputerChoice();
 
 console.log(playRound(playerSelection,computerSelection));
 
+function game() {
+    let computerScore = 0,
+      playerScore = 0;
+
+    for(i = 0; i < 5; i++) {
+      let result = playRound(playerSelection,getComputerChoice());
+      console.log(result);
+      if(result.includes('victorious')) {
+        playerScore++;
+        console.log(`computer: ${computerScore} | player: ${playerScore}`);
+      } else if(result.includes('defeated')) {
+        computerScore++;
+        console.log(`computer: ${computerScore} | player: ${playerScore}`);
+      }
+    }
+    
+    console.log(
+        'Final Score: Player - ' + playerScore + ' Computer - ' + computerScore
+    );
+    if( playerScore > computerScore) {
+        console.log('YOU ARE VICTORIOUS!');
+    } else if( playerScore < computerScore) {
+        console.log('YOU ARE DEFEATED, YOU NEED REVENGE!');
+    } else {
+        console.log('It\'s a tie! WTF!');
+    }
+}
+
+game();
+
 
 
 
