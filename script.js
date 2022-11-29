@@ -11,7 +11,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection,computerSelection ) {
     if(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'SCISSORS') {
-        return 'Everybody wins when you\'re scissoring ;)';
+       return 'Everybody wins when you\'re scissoring ;)';
     } else if(playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
         return 'It\'s a tie, get back in the ring!';
     } else if(playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS')  {
@@ -28,10 +28,15 @@ function playRound(playerSelection,computerSelection ) {
         return 'Rock DESTROYS Scissors, you are defeated!';
     } else {
         return 'Something has gone terribly wrong, try again!';
-    }
+    } 
 }
+
 
 const playerSelection = prompt("Choose Rock, Paper, or Scissors!");
 const computerSelection = getComputerChoice();
 
-console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection,computerSelection));
+
+
+
+
