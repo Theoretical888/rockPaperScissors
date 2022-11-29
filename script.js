@@ -9,24 +9,22 @@ function getComputerChoice() {
     } 
 } 
 
-
-
 function playRound(playerSelection,computerSelection ) {
-    if(playerSelection === 'Scissors' && computerSelection === 'Scissors') {
+    if(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'SCISSORS') {
         return 'Everybody wins when you\'re scissoring ;)';
-    } else if(playerSelection === computerSelection) {
+    } else if(playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
         return 'It\'s a tie, get back in the ring!';
-    } else if(playerSelection === 'Rock' && computerSelection === 'Scissors')  {
+    } else if(playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS')  {
         return 'Rock DESTROYS Scissors, you are victorious!';
-    } else if(playerSelection === 'Paper' && computerSelection === 'Rock') {
+    } else if(playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'ROCK') {
         return 'Paper covers Rock, you are victorious!';
-    } else if(playerSelection === 'Scissors' && computerSelection === 'Paper') {
+    } else if(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'PAPER') {
         return 'Scissors lacerates Paper, you are victorious!';
-    } else if(playerSelection === 'Rock' && computerSelection === 'Paper') {
+    } else if(playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'PAPER') {
         return 'Paper covers Rock, you are defeated!';
-    } else if(playerSelection === 'Paper' && computerSelection === 'Scissors') {
+    } else if(playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'SCISSORS') {
         return 'Scissors lacerates Paper, you are defeated!';
-    } else if(playerSelection === 'Scissors' && computerSelection === 'Rock') {
+    } else if(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'ROCK') {
         return 'Rock DESTROYS Scissors, you are defeated!';
     } else {
         return 'Something has gone terribly wrong, try again!';
