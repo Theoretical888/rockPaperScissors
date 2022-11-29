@@ -7,7 +7,13 @@ function getComputerChoice() {
     } else {
         return 'Scissors'
     } 
-} 
+}
+
+function getPlayerChoice() {
+    let playerInput = prompt('Rock, Paper, or Scissors?');
+    let result = playerInput.toUpperCase();
+    return result;
+}
 
 function playRound(playerSelection,computerSelection ) {
     if(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'SCISSORS') {
@@ -32,7 +38,7 @@ function playRound(playerSelection,computerSelection ) {
 }
 
 
-const playerSelection = prompt("Choose Rock, Paper, or Scissors!");
+const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice();
 
 console.log(playRound(playerSelection,computerSelection));
@@ -42,7 +48,7 @@ function game() {
       playerScore = 0;
 
     for(i = 0; i < 5; i++) {
-      let result = playRound(playerSelection,getComputerChoice());
+      let result = playRound(getPlayerChoice(),getComputerChoice());
       console.log(result);
       if(result.includes('victorious')) {
         playerScore++;
