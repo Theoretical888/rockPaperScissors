@@ -4,9 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap"
+     rel="stylesheet">
 </head>
 <body>
+    <header>
+        <h1 id="title">Rock Paper Scissors</h1>
+        <div id="scrolling-container">
+            <button id="reset">Restart</button>
+        </div>
+        <p>Focus your mind and choose wisely... Only one will leave victorious</p>
+    </header>
+    <main>
+        <div id="weapon-area" class="container">
+            <img src="images/rock.png" alt="rock" id="rock" class="player-weapon">
+            <img src="images/paper.png" alt="paper" id="paper" class="player-weapon">
+            <img src="images/scissors.png" alt="scissors" id="scissors" class="player-weapon">
+        </div>
+        <div id="output-area" class="container">
+            <div id="computer-selection">
+                <p class="computer-title">Enemy Selection</p>
+                <img src="images/question-mark.png" alt="question mark" id="enemy-weapon">
+            </div>
+            <div id="score-output">
+                <p id="result" class="score">Result: </p>
+                <p id="pscore" class="score">Player Score: 0</p>
+                <p id="cscore" class="score">Opponent Score: 0</p>
+            </div>
+        </div>
+        <p id="winner"></p>
+    </main>
+    <footer>
+        <p>Created by William Fenton</p>
+    </footer>
+    
     <script src="script.js"></script>
 </body>
 </html>

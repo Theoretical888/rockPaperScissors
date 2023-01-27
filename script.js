@@ -1,77 +1,107 @@
 function getComputerChoice() {
     let  randomNumber = Math.floor(Math.random() * 3);
     if(randomNumber == 0) {
-        return 'Rock';
+        return 'rock';
     } else if (randomNumber == 1) {
-        return 'Paper';
+        return 'paper';
     } else {
-        return 'Scissors'
+        return 'scissors'
     } 
 }
 
-function getPlayerChoice() {
-    let playerInput = prompt('Rock, Paper, or Scissors?');
-    let result = playerInput.toUpperCase();
-    return result;
+function startGame() {
+    let images = document.querySelectorAll('img');
+    images.forEach((img) =>
+    img.addEventListener('click', () =>{
+        if(img.id) {
+            playRound(img.id)
+        }
+    })
+  );
 }
 
-function playRound(playerSelection,computerSelection ) {
-    if(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'SCISSORS') {
-       return 'Everybody wins when you\'re scissoring ;)';
-    } else if(playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-        return 'It\'s a tie, get back in the ring!';
-    } else if(playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'SCISSORS')  {
-        return 'Rock DESTROYS Scissors, you are victorious!';
-    } else if(playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'ROCK') {
-        return 'Paper covers Rock, you are victorious!';
-    } else if(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'PAPER') {
-        return 'Scissors lacerates Paper, you are victorious!';
-    } else if(playerSelection.toUpperCase() === 'ROCK' && computerSelection.toUpperCase() === 'PAPER') {
-        return 'Paper covers Rock, you are defeated!';
-    } else if(playerSelection.toUpperCase() === 'PAPER' && computerSelection.toUpperCase() === 'SCISSORS') {
-        return 'Scissors lacerates Paper, you are defeated!';
-    } else if(playerSelection.toUpperCase() === 'SCISSORS' && computerSelection.toUpperCase() === 'ROCK') {
-        return 'Rock DESTROYS Scissors, you are defeated!';
-    } else {
-        return 'Something has gone terribly wrong, try again!';
-    } 
-}
-
-
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-
-console.log(playRound(playerSelection,computerSelection));
-
-function game() {
-    let computerScore = 0,
-      playerScore = 0;
-
-    for(i = 0; i < 5; i++) {
-      let result = playRound(getPlayerChoice(),getComputerChoice());
-      console.log(result);
-      if(result.includes('victorious')) {
-        playerScore++;
-        console.log(`computer: ${computerScore} | player: ${playerScore}`);
-      } else if(result.includes('defeated')) {
-        computerScore++;
-        console.log(`computer: ${computerScore} | player: ${playerScore}`);
-      }
+function checkScore () {
+    if (playerScore === 5) {
+        title.innerText = 'You have won the game';
+        document.getElementById('reset').style.display = 'block'
+    } else if (computerScore === 5) {
+        title.innerText = 'You have lost the game';
+        document.getElementById('reset').style.display = 'block'
+    } else  {
+        return;
     }
+}
+
+function resetScore() {
+    playerScore = 0;
+    computerScore = 0;
+    playerScore.innerText = 'Player Score: 0'
+    computerScore.innerText = 'Computer Score: 0'
+    result.innerText = ''
+    title.innerText = 'Rock Paper Scissors'
+}
     
-    console.log(
-        'Final Score: Player - ' + playerScore + ' Computer - ' + computerScore
-    );
-    if( playerScore > computerScore) {
-        console.log('YOU ARE VICTORIOUS!');
-    } else if( playerScore < computerScore) {
-        console.log('YOU ARE DEFEATED, YOU NEED REVENGE!');
+
+let playerScore = 0;
+let computerScore = 0;
+let reset = document.getElementById('reset');
+let title = document.getElementById('title');
+let result = document.getElementById('result');
+let pScore = document.getElementById('pscore');
+let cScore = document.getElementById('cscore');
+let computerImage = document.getElementById('enemy-weapon');
+
+reset.addEventListener('click', () => {
+    playerScore = 0;
+    computerScore = 0;
+    pScore.innerText = 'Player Score: 0'
+    cScore.innerText = 'Computer Score: 0'
+    result.innerText = 'Result: '
+    title.innerText = 'Rock Paper Scissors'
+    computerImage.src = 'images/question-mark.png'
+    document.getElementById('reset').style.display = 'none';
+} );
+
+function playRound(playerSelection) {
+    let computerSelection = getComputerChoice();
+    if (computerSelection === 'rock') {
+        computerImage.src = 'images/rock.png'
+    } else if (computerSelection === 'paper') {
+        computerImage.src = 'images/paper.png'
+    } else if (computerSelection === 'scissors') {
+        computerImage.src = 'images/scissors.png'
+    } else (computeImage.src = 'images/question-mark.png');
+
+    if (playerSelection === computerSelection) {
+        result.innerText = 'It\s a draw!'
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        result.innerText = 'You are victorious!';
+        playerScore++;
+        pScore.innerText = `Player Score: ${playerScore}`
+    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+        result.innerText = 'You are victorious!';
+        playerScore++;
+        pScore.innerText = `Player Score: ${playerScore}`
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        result.innerText = 'You are victorious!';
+        playerScore++;
+        pScore.innerText = `Player Score: ${playerScore}`
     } else {
-        console.log('It\'s a tie! WTF!');
-    }
+        result.innerText = 'You are Defeated';
+        computerScore++;
+        cScore.innerText = `Opponent Score: ${computerScore}`
+    };
+
+    checkScore();
 }
 
-game();
+startGame();
+
+
+
+
+    
+    
 
 
 
